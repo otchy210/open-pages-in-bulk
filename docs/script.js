@@ -31,9 +31,9 @@ const buildLi = (site) => {
 }
 
 const openNewTab = (url) => {
-    // window.open(url, '_blank');
-    const a = newEl('a', {href: url, target: '_blank'});
-    a.click();
+    window.open(url, '_blank');
+    // const a = newEl('a', {href: url, target: '_blank'});
+    // a.click();
 }
 
 const rootEl = document.body.querySelector('#root');
