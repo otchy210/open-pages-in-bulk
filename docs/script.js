@@ -30,6 +30,12 @@ const buildLi = (site) => {
     return li;
 }
 
+const openNewTab = (url) => {
+    // window.open(url, '_blank');
+    const a = newEl('a', {href: url, target: '_blank'});
+    a.click();
+}
+
 const rootEl = document.body.querySelector('#root');
 const sites = parseUrlParams();
 const list = newEl('ul');
@@ -43,7 +49,7 @@ const button = newEl('div', {class: 'button'}, 'まとめて開く');
 button.addEventListener('click', () => {
     const checkedUrl = Array.from(document.querySelectorAll('input.site:checked')).map(input => input.value);
     checkedUrl.forEach((url) => {
-        window.open(url, '_blank');
+        openNewTab(url);
     });
 });
 const p = newEl('p');
