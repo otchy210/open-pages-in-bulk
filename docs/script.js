@@ -22,7 +22,7 @@ const newEl = (tagName, attrs = {}, innerText = '') => {
 const buildLi = (site) => {
     const li = newEl('li');
     const label = newEl('label');
-    const cb = newEl('input', {type: 'checkbox', value: site.url});
+    const cb = newEl('input', {type: 'checkbox', value: site.url, 'checked': 'checked'});
     const title = newEl('span', {}, site.title);
     label.appendChild(cb);
     label.appendChild(title);
@@ -45,5 +45,7 @@ button.addEventListener('click', () => {
         window.open(site.url, '_blank');
     });
 });
+const p = newEl('p');
+p.appendChild(button);
 
-rootEl.appendChild(button);
+rootEl.appendChild(p);

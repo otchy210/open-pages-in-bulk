@@ -1,7 +1,5 @@
-body {
+body,
+ul,
+p {
     all: unset;
-}
-
-body {
-    background: #ccc;
 }
