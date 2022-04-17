@@ -66,7 +66,7 @@ button.addEventListener('click', () => {
     const nextIndex = (currentIndex + 1) % checkboxes.length;
     selectSite(checkboxes[nextIndex]);
 
-    window.open(checkboxes[currentIndex].value, '_blank');
+    location.href = checkboxes[currentIndex].value;
 });
 const p = newEl('p');
 p.appendChild(button);
