@@ -18,8 +18,35 @@ ul {
 
 li {
     list-style: none;
-    margin: 0;
+    margin: 1rem 0;
     font-size: 1rem;
+}
+
+li input {
+    display: none;
+}
+
+li span {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border-style: solid;
+    border-width: 1px;
+    border-color: transparent;
+}
+
+li span::before {
+    display: inline-block;
+    width: 1.5rem;
+    color: #009;
+    content: '';
+}
+
+li input:checked + span {
+    border-color: #009;
+}
+
+li input:checked + span::before {
+    content: '➤';
 }
 
 p {
