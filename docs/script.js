@@ -19,19 +19,31 @@ const newEl = (tagName, attrs = {}, innerText = '') => {
     return el;
 }
 
-const buildBlock = (site) => {
-    const title = newEl('div', {}, site.title);
-    const iframe = newEl('iframe', {src: site.url});
-    const div = newEl('div');
-    div.appendChild(title);
-    div.appendChild(iframe);
-    return div;
+const buildLi = (site) => {
+    const li = newEl('li');
+    const label = newEl('label');
+    const cb = newEl('input', {type: 'checkbox', value: site.url});
+    const title = newEl('span', {}, site.title);
+    label.appendChild(cb);
+    label.appendChild(title);
+    li.appendChild(label);
+    return li;
 }
 
 const rootEl = document.body.querySelector('#root');
 const sites = parseUrlParams();
+const list = newEl('ul');
 sites.forEach((site) => {
-    // window.open(site.url);
-    const block = buildBlock(site);
-    rootEl.appendChild(block);
-})
+    const li = buildLi(site);
+    list.appendChild(li);
+});
+rootEl.appendChild(list);
+
+const button = newEl('button', {}, 'まとめて開く');
+button.addEventListener('click', () => {
+    sites.forEach((site) => {
+        window.open(site.url, '_blank');
+    });
+});
+
+rootEl.appendChild(button);
