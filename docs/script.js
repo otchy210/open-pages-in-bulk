@@ -22,7 +22,7 @@ const newEl = (tagName, attrs = {}, innerText = '') => {
 const buildLi = (site) => {
     const li = newEl('li');
     const label = newEl('label');
-    const cb = newEl('input', {type: 'checkbox', value: site.url, 'checked': 'checked'});
+    const cb = newEl('input', {type: 'checkbox', class: 'site', value: site.url, 'checked': 'checked'});
     const title = newEl('span', {}, site.title);
     label.appendChild(cb);
     label.appendChild(title);
@@ -39,10 +39,11 @@ sites.forEach((site) => {
 });
 rootEl.appendChild(list);
 
-const button = newEl('button', {}, 'まとめて開く');
+const button = newEl('div', {class: 'button'}, 'まとめて開く');
 button.addEventListener('click', () => {
-    sites.forEach((site) => {
-        window.open(site.url, '_blank');
+    const checkedUrl = Array.from(document.querySelectorAll('input.site:checked')).map(input => input.value);
+    checkedUrl.forEach((url) => {
+        window.open(url, '_blank');
     });
 });
 const p = newEl('p');
